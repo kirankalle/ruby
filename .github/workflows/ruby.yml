@@ -1,0 +1,15 @@
+name: CI
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container:
+      image: ruby:2.6.5
+    steps:
+      - uses: actions/checkout@master
+      - name: Install dependencies
+        run: "make deps"
+      - name: Lint
+        run: "make lint"
+      - name: Test
+        run: "make test"
